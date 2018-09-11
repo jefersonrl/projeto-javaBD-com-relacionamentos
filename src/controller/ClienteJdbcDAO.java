@@ -53,28 +53,29 @@ public class ClienteJdbcDAO {
 	}
 	
 	public List<Cliente> listar() {
-		String sql = "select * from cliente";
+		String sql = "select * from tb_clientes";
         System.out.println(sql);		
-        List<Cliente> alunos = new ArrayList<Cliente>();
+        List<Cliente> clientes = new ArrayList<Cliente>();
 		try {
 			PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 			ResultSet rs = prepareStatement.executeQuery();
 			while(rs.next()) {
-				int id = rs.getInt("id");
-				String nome = rs.getString("nome");
-				String endereco = rs.getString("endereco");
-				String fone = rs.getString("fone");
-				String email = rs.getString("email");
-				Cliente aluno = new Cliente();
-				aluno.setNome(nome);
-				aluno.setEndereco(endereco);
-				aluno.setFone(fone);
-				aluno.setEmail(email);
+				
+				Cliente cliente = new Cliente();
+				
+				cliente.setId_cliente(rs.getInt("id_cliente"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setFone(rs.getString("fone"));
+				cliente.setEmail(rs.getString("email"));
+
+				clientes.add(cliente);
 			}
 			prepareStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return alunos;
+		return clientes;
 	}
+	
 }
