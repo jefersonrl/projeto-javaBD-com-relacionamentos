@@ -30,11 +30,9 @@ public class Executar extends JFrame{
 		JMenuItem mVendas = new JMenuItem("Vendas");
 		mVendas.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
-			    
+			    Vendas vendas = new Vendas();
 			}
 		});
-		
-		
 		
 		menuFile.add(mClientes);
 		menuFile.add(mVendas);

@@ -21,7 +21,7 @@ public class VendasJdbcDAO {
 	
 	
 	public void salvar(Vendas c) throws SQLException {
-		String sql = "insert into vendas (id_cliente, data, vlr_total, desconto, vlr_pago) values ('"+c.getId_venda()+"','"+c.getData()+"','"+c.getVlr_total()+"','"+c.getDesconto()+"','"+c.getVlr_pago()+"');";
+		String sql = "insert into tb_vendas (id_cliente, data, vlr_total, desconto, vlr_pago) values ('"+c.getId_cliente()+"','"+c.getData()+"','"+c.getVlr_total()+"','"+c.getDesconto()+"','"+c.getVlr_pago()+"');";
 		System.out.println(sql);
 		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
 		prepareStatement.executeUpdate();
@@ -29,7 +29,7 @@ public class VendasJdbcDAO {
 	}
 	
 	public void alterar(Vendas c) {
-		String sql = "update vendas set id_cliente='"+c.getId_cliente()+"',data='"+c.getData()+"',vlr_total='"+c.getVlr_total()+"',desconto='"+c.getDesconto()+"',vlr_pago='"+c.getVlr_pago()+"';";
+		String sql = "update tb_vendas set id_cliente='"+c.getId_cliente()+"',data='"+c.getData()+"',vlr_total='"+c.getVlr_total()+"',desconto='"+c.getDesconto()+"',vlr_pago='"+c.getVlr_pago()+"';";
 		System.out.println(sql);
 		PreparedStatement prepareStatement;
 		try {
@@ -42,7 +42,7 @@ public class VendasJdbcDAO {
 	}
 	
 	public void excluir(int id) {
-		String sql = "delete from vendas where id='"+id+"';";
+		String sql = "delete from tb_vendas where id='"+id+"';";
 		System.out.println(sql);
         try {
     		PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class VendasJdbcDAO {
 	}
 	
 	public List<Vendas> listar() {
-		String sql = "select * from vendas";
+		String sql = "select * from tb_vendas";
         System.out.println(sql);		
         List<Vendas> alunos = new ArrayList<Vendas>();
 		try {
